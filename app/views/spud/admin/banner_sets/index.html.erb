@@ -1,0 +1,12 @@
+<% content_for :data_controls do %>
+  <%= link_to "New Banner Set", new_spud_admin_banner_set_path, :class => "btn btn-primary spud_banner_sets_add_new", :title => "New Banner Set" %>
+<% end %>
+
+<% content_for :detail do %>
+  <ul class="spud_admin_banner_sets_list">
+    <%= render :partial => 'banner_set', :collection => @banner_sets %>
+  <ul>
+  <script>
+    $(document).ready(spud.admin.banner_sets.init);
+  </script>
+<% end %>

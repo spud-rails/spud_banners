@@ -2,7 +2,9 @@ PATH
   remote: .
   specs:
     spud_banners (0.0.1)
+      paperclip
       rails (~> 3.2.9)
+      spud_core (>= 0.9.0)
 
 GEM
   remote: http://rubygems.org/
@@ -35,7 +37,14 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    authlogic (3.1.3)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    bootstrap-will_paginate (0.0.9)
+      will_paginate
+    breadcrumbs_on_rails (2.2.0)
     builder (3.0.4)
+    cocaine (0.4.2)
     erubis (2.7.0)
     hike (1.2.1)
     i18n (0.6.1)
@@ -50,6 +59,12 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.3.7)
+    paperclip (3.3.1)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.4.0)
+      mime-types
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -76,18 +91,29 @@ GEM
     rake (10.0.1)
     rdoc (3.12)
       json (~> 1.4)
+    retina_tag (1.0.2)
+      jquery-rails
+      rails (~> 3.1)
     sprockets (2.2.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.6)
+    spud_core (0.9.5)
+      authlogic
+      bootstrap-will_paginate
+      breadcrumbs_on_rails
+      jquery-rails
+      rails (~> 3.2.2)
+      retina_tag
+      will_paginate
     thor (0.16.0)
     tilt (1.3.3)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.35)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -95,4 +121,3 @@ PLATFORMS
 DEPENDENCIES
   jquery-rails
   spud_banners!
-  sqlite3

@@ -1,0 +1,2 @@
+//= require spud/admin/banners/banners
+//= require spud/admin/banners/banner_sets

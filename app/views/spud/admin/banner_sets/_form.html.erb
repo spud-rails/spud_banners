@@ -1,0 +1,32 @@
+<%= form_for @banner_set, :url => path, :html => {:class => 'form-horizontal spud_banner_set_form'} do |f| %>
+
+  <%= error_messages_for(f.object) %>
+
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :name, "Name",:class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :width, "Width", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :width %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :height, "Height", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :height %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :cropped, "Cropped", :class => "control-label" %>
+      <div class="controls">
+        <%= f.check_box :cropped %>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>
