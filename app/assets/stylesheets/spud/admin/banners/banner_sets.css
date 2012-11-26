@@ -2,3 +2,26 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.spud_admin_banner_sets_list{
+  margin: 0;
+  padding: 0;
+  border: 1px solid #eee;
+  min-height: 40px;
+}
+.spud_admin_banner_sets_list_item{
+  clear: both;
+  overflow: hidden;
+  padding: 10px;
+}
+.spud_admin_banner_sets_list_item:nth-child(2n) {
+  background: #F1F1F1;
+}
+.spud_admin_banner_sets_list_item:hover{
+  background: #FFEDDF;
+  -webkit-transition: background 0.1s ease-in;
+  -moz-transition: background 0.1s ease-in;
+}
+.spud_admin_banner_sets_list_item_actions{
+  float: right;
+}

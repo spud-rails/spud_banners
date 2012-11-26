@@ -1,0 +1,7 @@
+<%= content_tag :div, 'data-id' => banner.id, :class => 'spud_banner_set_banner_item' do %>
+  <%= image_tag banner.banner.url(:spud_admin_small) %>
+  <div class="spud_banner_set_banner_item_actions">
+    <%= link_to 'Edit', edit_spud_admin_banner_path(banner), :class => 'spud_banner_set_banner_item_edit' %>
+    <%= link_to 'Delete', spud_admin_banner_path(banner), :class => 'spud_banner_set_banner_item_delete' %>
+  </div>
+<% end %>

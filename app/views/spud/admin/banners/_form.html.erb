@@ -1,0 +1,49 @@
+<%= form_for @banner, :url => path, :html => {:class => 'form-horizontal spud_banner_form', :target => 'spud_banners_upload_target'} do |f| %>
+
+  <%= error_messages_for(f.object) %>
+
+  <%= f.hidden_field :link_to_class, {:value => 'url'} %>
+
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :link_to, 'Link to', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :link_to %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :target, 'Open Link in', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :target, options_for_select([
+          ['Same Window', '_self'],
+          ['New Window', '_blank']
+        ], @banner.target) %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :title, 'Image Title', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :alt, 'Alt Text', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :alt %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :banner, 'Banner', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.file_field :banner %>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="progress progress-striped active spud_banner_upload_progress">
+    <div class="bar"></div>
+  </div>
+
+<% end %>
+
+<iframe id="spud_banners_upload_target" name="spud_banners_upload_target" style="display:none;"></iframe>

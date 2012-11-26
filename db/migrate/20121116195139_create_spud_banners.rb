@@ -5,7 +5,9 @@ class CreateSpudBanners < ActiveRecord::Migration
       t.string :link_to
       t.string :link_to_class
       t.string :target
-      t.integer :order, :default => 0
+      t.string :title
+      t.string :alt
+      t.integer :sort_order, :default => 0
       t.attachment :banner
       t.timestamps
     end

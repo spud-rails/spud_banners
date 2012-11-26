@@ -9,6 +9,7 @@ spud.admin.banner_sets = new function(){
   this.init = function(){
     $('.spud_banner_sets_add_new').on('click', self.clickedAddNewBannerSet);
     $('.spud_admin_banner_sets_list').on('click', '.spud_banner_sets_edit', self.clickedEditBannerSet);
+    $('.spud_admin_banner_sets_list').on('click', '.spud_banner_sets_delete', self.clickedDeleteBannerSet);
     $('.modal-body').on('submit', '.spud_banner_set_form', self.submittedBannerSetForm);
   };
 
@@ -40,6 +41,27 @@ spud.admin.banner_sets = new function(){
         });
       }
     });
+  };
+
+  self.clickedDeleteBannerSet = function(e){
+    e.preventDefault();
+    if(window.confirm('Are you sure?')){
+      var el = $(this);
+      $.ajax({
+        url: el.attr('href'),
+        type: 'post',
+        data: {'_method':'delete'},
+        complete: function(jqXHR, textStatus){
+          var parent = el.parents('li');
+          parent.fadeOut(200, function(){
+            parent.remove();
+          });
+          if(textStatus != 'success'){
+            console.warn('Something went wrong:', jqXHR);
+          }
+        }
+      });
+    }
   };
 
   self.submittedBannerSetForm = function(e){

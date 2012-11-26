@@ -3,6 +3,6 @@
   <span class="spud_admin_banner_sets_list_item_actions">
     <%= link_to 'Manage Banners', spud_admin_banner_set_path(banner_set), :class => 'btn btn-small' %>
     <%= link_to 'Edit Configuration', edit_spud_admin_banner_set_path(banner_set), :class => 'btn btn-small spud_banner_sets_edit' %>
-    <%= link_to 'Delete', spud_admin_banner_set_path(banner_set), :class => 'btn btn-small btn-danger', :method => :delete, :confirm => 'Are you sure?' %>
+    <%= link_to 'Delete', spud_admin_banner_set_path(banner_set), :class => 'btn btn-small btn-danger spud_banner_sets_delete' %>
   </span>
 <% end %>

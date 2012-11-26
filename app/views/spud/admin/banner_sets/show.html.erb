@@ -1,0 +1,11 @@
+<% content_for :data_controls do %>
+  <%= link_to 'Upload Banner', new_spud_admin_banner_set_banner_path(@banner_set), :class => 'btn btn-primary spud_banner_add_new' %>
+<% end %>
+
+<div class="spud_banner_set_banners_container">
+  <%= render :partial => 'spud/admin/banners/banner', :collection => @banner_set.banners %>
+</div>
+
+<script>
+  $(document).ready(spud.admin.banners.init);
+</script>

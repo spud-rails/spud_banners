@@ -1,4 +1,4 @@
-class Spud::Admin::BannerSetsController < ApplicationController
+class Spud::Admin::BannerSetsController < Spud::Admin::ApplicationController
 
   before_filter :get_record, :only => [:show, :edit, :update, :destroy]
   respond_to :html
@@ -23,7 +23,7 @@ class Spud::Admin::BannerSetsController < ApplicationController
   def create
     @banner_set = SpudBannerSet.new(params[:spud_banner_set])
     if @banner_set.save
-      flash[:notice] = 'BannerSet created successfully' 
+      flash.now[:notice] = 'BannerSet created successfully' 
       render 'create'
     else
       render 'new', :status => 422
@@ -36,7 +36,7 @@ class Spud::Admin::BannerSetsController < ApplicationController
 
   def update
     if @banner_set.update_attributes(params[:spud_banner_set])
-      flash[:notice] = 'BannerSet updated successfully'
+      flash.now[:notice] = 'BannerSet updated successfully'
       render 'create'
     else
       render 'edit', :status => 422
@@ -44,8 +44,13 @@ class Spud::Admin::BannerSetsController < ApplicationController
   end
 
   def destroy
-    flash[:notice] = 'BannerSet deleted successfully' if @banner_set.destroy
-    respond_with @banner_set, :location => spud_admin_banner_sets_path
+    if @banner_set.destroy
+      flash.now[:notice] = 'BannerSet deleted successfully' 
+      status = 200
+    else
+      status = 422
+    end
+    render :nothing => true, :status => status
   end
 
 private
@@ -55,7 +60,7 @@ private
       logger.debug "Looking for banner set with id: #{params[:id]}"
       @banner_set = SpudBannerSet.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
-      flash[:error] = "Could not find the requested BannerSet"
+      flash.now[:error] = "Could not find the requested BannerSet"
       redirect_to spud_admin_banner_sets_path
       return false
     end

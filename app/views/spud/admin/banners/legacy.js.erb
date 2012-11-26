@@ -1,0 +1,5 @@
+<% if @banner.errors.any? %>
+  spud.admin.banners.onLegacyUploadError("<%= escape_javascript(render :partial => 'form', :locals => {:path => spud_admin_banner_set_banners_path(@banner_set)}) %>");
+<% else %>
+  spud.admin.banners.onLegacyUploadComplete("<%= escape_javascript(render :partial => 'banner', :locals => {:banner => @banner}) %>");
+<% end %>

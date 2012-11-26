@@ -2,3 +2,35 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+/* Banner Management
+-------------------- */
+.spud_banner_set_banners_container{
+
+}
+.spud_banner_set_banner_item{
+  padding: 0 10px 10px 0;
+  position: relative;
+  display: inline-block;
+  cursor: move;
+  float: left;
+}
+.spud_banner_set_banner_item img{
+  display: inline-block;
+}
+.spud_banner_set_banner_item_actions{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.spud_banner_set_banner_item_actions a{
+  color: white;
+}
+
+/* Banner Form
+--------------- */
+.spud_banner_upload_progress{
+  display: none;
+}
