@@ -48,11 +48,8 @@ class Spud::Admin::BannerSetsController < Spud::Admin::ApplicationController
   def destroy
     if @banner_set.destroy
       flash.now[:notice] = 'BannerSet deleted successfully' 
-      status = 200
-    else
-      status = 422
     end
-    render :nothing => true, :status => status
+    render :nothing => true
   end
 
 private

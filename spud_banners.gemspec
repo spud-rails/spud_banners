@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Banner Management tool for Spud applications."
   s.description = "Spud Banners allows you to create and maintain sets of rotating banners for use on your Spud-based website."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "Readme.markdown"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.markdown"]
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 3.2.9"
