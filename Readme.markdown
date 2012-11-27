@@ -20,7 +20,7 @@ Spud Banners is an engine for creating and managing rotating banner sets, design
 
 Spud Banners accepts the following configuration options:
 
-	Spud::Photos.configure do |config|
+	Spud::Banners.configure do |config|
 		config.paperclip_storage = :filesystem #use :s3 to use s3 storage (aws gem required)
 		config.s3_credentials = "#{Rails.root}/config/s3.yml"
 		config.storage_path = ":rails_root/public/system/spud_banners/:id/:style/:basename.:extension"
