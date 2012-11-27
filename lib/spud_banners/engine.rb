@@ -11,7 +11,7 @@ module Spud
       initializer :admin do
         Spud::Core.config.admin_applications += [{
           :name => 'Banner Sets',
-          :thumbnail => 'spud/photos/photo_albums_thumb.png',
+          :thumbnail => 'spud/admin/banners/banners.png',
           :retina => true,
           :url => '/spud/admin/banner_sets',
           :order => 120  
