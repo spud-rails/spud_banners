@@ -6,7 +6,7 @@ class SpudBannerSet < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_numericality_of :width, :height
 
-  def self.set_for_identifier(identifier)
+  def self.find_by_identifier(identifier)
     if identifier.class == String
       banner_set = SpudBannerSet.find_by_name(identifier)
     elsif identifier.class == Symbol
@@ -22,4 +22,9 @@ class SpudBannerSet < ActiveRecord::Base
       banner.banner.reprocess!
     end
   end
+
+  def set_name
+    return name
+  end
+
 end

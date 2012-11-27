@@ -2,6 +2,7 @@ class Spud::Admin::BannersController < Spud::Admin::ApplicationController
 
   include RespondsToParent
 
+  cache_sweeper :spud_banner_sweeper, :only => [:create, :update, :destroy]
   before_filter :get_set, :only => [:new, :create]
   before_filter :get_record, :only => [:edit, :update, :destroy]
   respond_to :html

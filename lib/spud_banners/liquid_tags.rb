@@ -3,7 +3,6 @@ require_relative '../../app/helpers/spud_banners_helper'
 
 module Spud
   module Banners
-
     class BannerSetTag < Liquid::Tag
 
       include Sprockets::Helpers::RailsHelper
@@ -13,7 +12,7 @@ module Spud
       include SpudBannersHelper
 
       def initialize(tag_name, set_identifer, tokens)
-        @set_identifer = set_identifer
+        @banner_set = SpudBannerSet.find_by_identifier(set_identifer)
       end
 
       def tag_name
@@ -21,13 +20,13 @@ module Spud
       end
 
       def tag_value
-        return @set_identifer
+        return @banner_set.name
       end
 
       def render(context)
-        return spud_banners_for_set(@set_identifer)
+        return spud_banners_for_set(@banner_set)
       end
-    end
 
+    end
   end
 end

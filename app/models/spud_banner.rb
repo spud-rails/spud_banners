@@ -44,4 +44,8 @@ class SpudBanner < ActiveRecord::Base
     end
   end
 
+  def set_name
+    return owner.name
+  end
+
 end

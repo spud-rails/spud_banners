@@ -87,6 +87,7 @@ spud.admin.banners = new function(){
       var file = form.find('#spud_banner_banner')[0].files[0];
       if(file){
         fd.append('spud_banner[banner]', file);
+        $('.spud_banner_upload_progress').show();
       }
 
       var xhr = new XMLHttpRequest();
@@ -96,8 +97,6 @@ spud.admin.banners = new function(){
       xhr.addEventListener('abort', self.onFileUploadAbort);
       xhr.open('POST', form.attr('action'));
       xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-
-      $('.spud_banner_upload_progress').show();
       xhr.send(fd);
       return false;
     }

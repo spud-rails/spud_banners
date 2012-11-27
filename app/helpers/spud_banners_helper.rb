@@ -1,16 +1,12 @@
 module SpudBannersHelper
 
-  def spud_banners_for_set(identifier, options = {})
-    if identifier.class == SpudBannerSet
-      banner_set = identifier
-    elsif identifier.class == String
-      banner_set = SpudBannerSet.find_by_name(identifier)
-    elsif identifier.class == Symbol
-      banner_set = SpudBannerSet.find_by_name(identifier.to_s.titleize)
+  def spud_banners_for_set(set_or_identifier, options = {})
+    if set_or_identifier.is_a?(SpudBannerSet)
+      banner_set = set_or_identifier
     else
-      banner_set = SpudBannerSet.find(identifier)
+      banner_set = SpudBannerSet.find_by_identifier(set_or_identifier)
     end
-    return if banner_set.blank?
+    return '' if banner_set.blank?
     if block_given?
       banner_set.banners.each do |banner|
         yield(banner)
@@ -26,12 +22,16 @@ module SpudBannersHelper
 
   def spud_banner_tag(banner)
     if banner.link_to.blank?
-      return image_tag(banner.banner.url(:banner), :alt => banner.alt, :title => banner.title)
+      spud_banner_image_tag(banner)
     else
-      return link_to(banner.link_to, :target => banner.target) do
-        image_tag(banner.banner.url(:banner), :alt => banner.alt, :title => banner.title)
+      link_to(banner.link_to, :target => banner.target) do
+        spud_banner_image_tag(banner)
       end
     end
+  end
+
+  def spud_banner_image_tag(banner)
+    image_tag(banner.banner.url(:banner), :alt => banner.alt, :title => banner.title)
   end
 
 end

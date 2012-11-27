@@ -1,5 +1,6 @@
 class Spud::Admin::BannerSetsController < Spud::Admin::ApplicationController
 
+  cache_sweeper :spud_banner_sweeper, :only => [:create, :update, :destroy]
   before_filter :get_record, :only => [:show, :edit, :update, :destroy]
   respond_to :html
   belongs_to_spud_app :banner_sets
