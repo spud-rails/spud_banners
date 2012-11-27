@@ -2,8 +2,6 @@
 
   <%= error_messages_for(f.object) %>
 
-  <%= f.hidden_field :link_to_class, {:value => 'url'} %>
-
   <fieldset>
     <div class="control-group">
       <%= f.label :link_to, 'Link to', :class => 'control-label' %>
@@ -12,12 +10,12 @@
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :target, 'Open Link in', :class => 'control-label' %>
+      <%= f.label :link_target, 'Open Link in', :class => 'control-label' %>
       <div class="controls">
-        <%= f.select :target, options_for_select([
+        <%= f.select :link_target, options_for_select([
           ['Same Window', '_self'],
           ['New Window', '_blank']
-        ], @banner.target) %>
+        ], @banner.link_target) %>
       </div>
     </div>
     <div class="control-group">

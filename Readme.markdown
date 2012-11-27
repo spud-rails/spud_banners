@@ -60,14 +60,14 @@ Accepts a banner model and returns only the image tag, no link.
 
 Displaying banners using the standard helper.
 
-		<div id="banners">
-			<%= spud_banners_for_set(:promotions) %>
-		</div>
+	<div id="banners">
+		<%= spud_banners_for_set(:promotions) %>
+	</div>
 
 Displaying banners using the helper, with a block for custom html.
 
 	<ul id="slides">
-		<% spud_banners_for_set(:weekly_promotions) do |banner| %>
+		<% spud_banners_for_set(:promotions) do |banner| %>
 			<li class="custom_slide">
 				<%= spud_banner_tag(banner) %>
 			</li>
@@ -77,7 +77,7 @@ Displaying banners using the helper, with a block for custom html.
 Displaying banners using the helper, with a block for even more custom html.
 
 	<ul id="slides">
-		<% spud_banners_for_set(:weekly_promotions) do |banner| %>
+		<% spud_banners_for_set(:promotions) do |banner| %>
 			<li class="custom_slide">
 				<h3><%= link_to banner.link_to, banner.title %></h3>
 				<%= image_tag(banner.banner.url(:banner), :alt => banner.alt, :title => banner.title) %>
@@ -91,7 +91,7 @@ Spud Banners comes with its own custom [Liquid][liquid] tag. For now the liquid 
 
 Usage:
 
-	<%= raw Liquid::Template.parse("{% banner_set Promotions %}").render %>
+	<%= raw Liquid::Template.parse("{% spud_banner_set Promotions %}").render %>
 
 ## Slideshows
 

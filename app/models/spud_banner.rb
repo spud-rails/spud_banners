@@ -1,5 +1,5 @@
 class SpudBanner < ActiveRecord::Base
-  attr_accessible :banner, :link_to, :link_to_class, :title, :alt, :sort_order, :target
+  attr_accessible :banner, :link_to, :link_target, :title, :alt, :sort_order
   belongs_to :owner, :class_name => 'SpudBannerSet', :foreign_key => 'spud_banner_set_id'
 
   has_attached_file :banner, 

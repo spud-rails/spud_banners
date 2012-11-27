@@ -79,8 +79,7 @@ spud.admin.banners = new function(){
       fd.append('_method', form.find('[name=_method]').val());
       fd.append('authenticity_token', form.find('[name=authenticity_token]').val());
       fd.append('spud_banner[link_to]', form.find('#spud_banner_link_to').val());
-      fd.append('spud_banner[link_to_class]', form.find('#spud_banner_link_to_class').val());
-      fd.append('spud_banner[target]', form.find('#spud_banner_target').val());
+      fd.append('spud_banner[link_target]', form.find('#spud_banner_target').val());
       fd.append('spud_banner[title]', form.find('#spud_banner_title').val());
       fd.append('spud_banner[alt]', form.find('#spud_banner_alt').val());
 

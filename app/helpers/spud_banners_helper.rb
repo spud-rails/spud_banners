@@ -24,7 +24,7 @@ module SpudBannersHelper
     if banner.link_to.blank?
       spud_banner_image_tag(banner)
     else
-      link_to(banner.link_to, :target => banner.target) do
+      link_to(banner.link_to, :target => banner.link_target) do
         spud_banner_image_tag(banner)
       end
     end

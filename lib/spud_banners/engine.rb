@@ -18,7 +18,7 @@ module Spud
         }]
       end
       initializer :liquid do
-        Liquid::Template.register_tag('banner_set', Spud::Banners::BannerSetTag) if defined?(Liquid::Template)
+        Liquid::Template.register_tag('spud_banner_set', Spud::Banners::BannerSetTag) if defined?(Liquid::Template)
       end
     end
   end
