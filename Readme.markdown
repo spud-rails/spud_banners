@@ -123,6 +123,6 @@ Below is an example of integration with [SlidesJs][slidesjs], a jQuery plugin.
 		});
 	</script>
 
-[spud]:https://github.com/davydotcom/spud_core_admin
+[spud]:https://github.com/spud-rails/spud_core_admin
 [slidesjs]:http://www.slidesjs.com
 [liquid]:https://github.com/Shopify/liquid
