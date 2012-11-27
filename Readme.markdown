@@ -6,13 +6,13 @@ Spud Banners is an engine for creating and managing rotating banner sets, design
 
 1. In your Gemfile add the following
 
-    gem 'spud_banners'
+		gem 'spud_banners'
 
 2. Run bundle install
 3. Copy in database migrations to your new rails project
 
-    bundle exec rake railties:install:migrations
-    rake db:migrate
+		bundle exec rake railties:install:migrations
+		rake db:migrate
 
 4. Run a rails server instance and point your browser to /spud/admin
 
@@ -20,12 +20,12 @@ Spud Banners is an engine for creating and managing rotating banner sets, design
 
 Spud Banners accepts the following configuration options:
 
-    Spud::Photos.configure do |config|
-      config.paperclip_storage = :filesystem #use :s3 to use s3 storage (aws gem required)
-      config.s3_credentials = "#{Rails.root}/config/s3.yml"
-      config.storage_path = ":rails_root/public/system/spud_banners/:id/:style/:basename.:extension"
-      config.storage_url = "/system/spud_banners/:id/:style/:basename.:extension"
-    end
+	Spud::Photos.configure do |config|
+		config.paperclip_storage = :filesystem #use :s3 to use s3 storage (aws gem required)
+		config.s3_credentials = "#{Rails.root}/config/s3.yml"
+		config.storage_path = ":rails_root/public/system/spud_banners/:id/:style/:basename.:extension"
+		config.storage_url = "/system/spud_banners/:id/:style/:basename.:extension"
+	end
 
 ## Creating a Banner Set
 
@@ -60,30 +60,30 @@ Accepts a banner model and returns only the image tag, no link.
 
 Displaying banners using the standard helper.
 
-    <div id="banners">
-      <%= spud_banners_for_set(:promotions) %>
-    </div>
+		<div id="banners">
+			<%= spud_banners_for_set(:promotions) %>
+		</div>
 
 Displaying banners using the helper, with a block for custom html.
 
-    <ul id="slides">
-      <% spud_banners_for_set(:weekly_promotions) do |banner| %>
-        <li class="custom_slide">
-          <%= spud_banner_tag(banner) %>
-        </li>
-      <% end %>
-    </ul>
+	<ul id="slides">
+		<% spud_banners_for_set(:weekly_promotions) do |banner| %>
+			<li class="custom_slide">
+				<%= spud_banner_tag(banner) %>
+			</li>
+		<% end %>
+	</ul>
 
 Displaying banners using the helper, with a block for even more custom html.
 
-    <ul id="slides">
-      <% spud_banners_for_set(:weekly_promotions) do |banner| %>
-        <li class="custom_slide">
-          <h3><%= link_to banner.link_to, banner.title %></h3>
-          <%= image_tag(banner.banner.url(:banner), :alt => banner.alt, :title => banner.title) %>
-        </li>
-      <% end %>
-    </ul>
+	<ul id="slides">
+		<% spud_banners_for_set(:weekly_promotions) do |banner| %>
+			<li class="custom_slide">
+				<h3><%= link_to banner.link_to, banner.title %></h3>
+				<%= image_tag(banner.banner.url(:banner), :alt => banner.alt, :title => banner.title) %>
+			</li>
+		<% end %>
+	</ul>
 
 ## Liquid
 
@@ -91,7 +91,7 @@ Spud Banners comes with its own custom [Liquid][liquid] tag. For now the liquid 
 
 Usage:
 
-    <%= raw Liquid::Template.parse("{% banner_set Promotions %}").render %>
+	<%= raw Liquid::Template.parse("{% banner_set Promotions %}").render %>
 
 ## Slideshows
 
@@ -99,29 +99,29 @@ Spud Banners does not provide a built-in slideshow animation library. Instead, w
 
 Below is an example of integration with [SlidesJs][slidesjs], a jQuery plugin.
 
-    <style type="text/css" media="screen">
-      .spud_banner_set {
-        width: 600px;
-        height: 200px;
-      }
-      .spud_banner_set_banner {
-        width: 600px;
-        height: 200px;
-        display: block;
-      }
-    </style>
-    <div id="banners">
-      <%= spud_banners_for_set(:promotions) %>
-    </div>
-    <script src="/slides.jquery.js" type="text/javascript"></script>
-    <script>
-      $(document).ready(function(){
-        $("#banners").slides({
-          play: 5000,
-          container: 'spud_banner_set'
-        });
-      });
-    </script>
+	<style type="text/css" media="screen">
+		.spud_banner_set {
+			width: 600px;
+			height: 200px;
+		}
+		.spud_banner_set_banner {
+			width: 600px;
+			height: 200px;
+			display: block;
+		}
+	</style>
+	<div id="banners">
+		<%= spud_banners_for_set(:promotions) %>
+	</div>
+	<script src="/slides.jquery.js" type="text/javascript"></script>
+	<script>
+		$(document).ready(function(){
+			$("#banners").slides({
+				play: 5000,
+				container: 'spud_banner_set'
+			});
+		});
+	</script>
 
 [spud]:https://github.com/davydotcom/spud_core_admin
 [slidesjs]:http://www.slidesjs.com
