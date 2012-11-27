@@ -44,9 +44,9 @@ Once a Set has been created, you can begin adding banners to it. Banners contain
 
 A number of view helpers are provided for displaying banners in your templates. 
 
-`spud_banners_for_set(set_or_identifier)`
+`spud_banners_for_set(set_or_identifier, options)`
 
-Accepts the banner set name as a String or Symbol and returns an html template. Optionally takes a block argument for rendering custom html. 
+Accepts the banner set name as a String or Symbol and returns an html template. Options hash accepts a `:limit` parameter for limiting the number of banners returned. This helper also accepts a block argument for rendering custom html. 
 
 `spud_banner_tag(banner)`
 

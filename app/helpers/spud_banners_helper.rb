@@ -1,6 +1,7 @@
 module SpudBannersHelper
 
   def spud_banners_for_set(set_or_identifier, options = {})
+    limit = options[:limit] || false
     if set_or_identifier.is_a?(SpudBannerSet)
       banner_set = set_or_identifier
     else
@@ -8,12 +9,12 @@ module SpudBannersHelper
     end
     return '' if banner_set.blank?
     if block_given?
-      banner_set.banners.each do |banner|
+      banner_set.banners.limit(limit).each do |banner|
         yield(banner)
       end
     else
       content_tag(:div, :class => 'spud_banner_set', 'data-id' => banner_set.id) do
-        banner_set.banners.map do |banner|
+        banner_set.banners.limit(limit).map do |banner|
           concat(content_tag(:div, :class => 'spud_banner_set_banner', 'data-id' => banner.id){ spud_banner_tag(banner) })
         end
       end
