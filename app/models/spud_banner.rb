@@ -27,4 +27,21 @@ class SpudBanner < ActiveRecord::Base
     end
     return styles
   end
+
+  def self.banners_for_set(identifier)
+    case identifier.class
+      when String
+        banner_set = SpudBannerSet.find_by_name(identifier)
+      when Symbol
+        banner_set = SpudBannerSet.find_by_name(identifier.to_s.titleize)
+      when Number
+        banner_set = SpudBannerSet.find(identifier)
+    end
+    if banner_set
+      return banner_set.banners
+    else
+      return []
+    end
+  end
+
 end

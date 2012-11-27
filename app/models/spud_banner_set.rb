@@ -5,4 +5,21 @@ class SpudBannerSet < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_numericality_of :width, :height
+
+  def self.set_for_identifier(identifier)
+    if identifier.class == String
+      banner_set = SpudBannerSet.find_by_name(identifier)
+    elsif identifier.class == Symbol
+      banner_set = SpudBannerSet.find_by_name(identifier.to_s.titleize)
+    else
+      banner_set = SpudBannerSet.find(identifier)
+    end
+    return banner_set
+  end
+
+  def reprocess_banners!
+    self.banners.each do |banner|
+      banner.banner.reprocess!
+    end
+  end
 end

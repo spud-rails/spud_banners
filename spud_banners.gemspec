@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.9"
   s.add_dependency 'spud_core', ">= 0.9.0"
   s.add_dependency "paperclip", ">= 0"
+  s.add_dependency 'liquid'
 end

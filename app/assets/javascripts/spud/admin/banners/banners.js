@@ -150,7 +150,6 @@ spud.admin.banners = new function(){
   };
 
   self.sortedBanners = function(e, ui){
-    console.log('sort!');
     var ids = [];
     $('.spud_banner_set_banner_item').each(function(){
       ids.push($(this).attr('data-id'));
@@ -158,10 +157,7 @@ spud.admin.banners = new function(){
     $.ajax({
       url: '/spud/admin/banners/sort',
       type: 'post',
-      data: {spud_banner_ids:ids, _method:'put'},
-      complete: function(jqXHR, textStatus){
-        console.log('Complete!', arguments);
-      }
+      data: {spud_banner_ids:ids, _method:'put'}
     });
   };
 }();

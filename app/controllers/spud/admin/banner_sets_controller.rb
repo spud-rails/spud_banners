@@ -37,6 +37,7 @@ class Spud::Admin::BannerSetsController < Spud::Admin::ApplicationController
   def update
     if @banner_set.update_attributes(params[:spud_banner_set])
       flash.now[:notice] = 'BannerSet updated successfully'
+      @banner_set.reprocess_banners!
       render 'create'
     else
       render 'edit', :status => 422

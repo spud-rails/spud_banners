@@ -1,5 +1,6 @@
 require 'spud_core'
 require 'paperclip'
+require 'liquid'
 
 module Spud
   module Banners
@@ -15,6 +16,9 @@ module Spud
           :url => '/spud/admin/banner_sets',
           :order => 120  
         }]
+      end
+      initializer :liquid do
+        Liquid::Template.register_tag('banner_set', Spud::Banners::BannerSetTag) if defined?(Liquid::Template)
       end
     end
   end
