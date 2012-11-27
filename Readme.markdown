@@ -79,7 +79,7 @@ Displaying banners using the helper, with a block for even more custom html.
 	<ul id="slides">
 		<% spud_banners_for_set(:promotions) do |banner| %>
 			<li class="custom_slide">
-				<h3><%= link_to banner.link_to, banner.title %></h3>
+				<h3><%= link_to banner.link_to, banner.title, :target => banner.link_target %></h3>
 				<%= image_tag(banner.banner.url(:banner), :alt => banner.alt, :title => banner.title) %>
 			</li>
 		<% end %>
