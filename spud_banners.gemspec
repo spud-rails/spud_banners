@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Spud::Banners::VERSION
   s.authors     = ["Greg Woods"]
   s.email       = ["greg@westlakedesign.com"]
-  s.homepage    = "http://www.github.com/gregawoods/spud_banners"
+  s.homepage    = "http://www.github.com/spud-rails/spud_banners"
   s.summary     = "Banner Management tool for Spud applications."
   s.description = "Spud Banners allows you to create and maintain sets of rotating banners for use on your Spud-based website."
 
