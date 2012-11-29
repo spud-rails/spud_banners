@@ -3,7 +3,7 @@ class CreateSpudBanners < ActiveRecord::Migration
     create_table :spud_banners do |t|
       t.integer :spud_banner_set_id, :null => false
       t.string :link_to
-      t.string :link_target
+      t.string :link_target, :default => '_self'
       t.string :title
       t.string :alt
       t.integer :sort_order, :default => 0
