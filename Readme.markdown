@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/spud-rails/spud_banners.png?branch=master)](https://travis-ci.org/spud-rails/spud_banners)
 # Spud Banners
 
 Spud Banners is an engine for creating and managing rotating banner sets, designed for use with [Spud][spud].
