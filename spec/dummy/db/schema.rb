@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(:version => 20121127192250) do
   add_index "spud_banner_sets", ["name"], :name => "index_spud_banner_sets_on_name", :unique => true
 
   create_table "spud_banners", :force => true do |t|
-    t.integer  "spud_banner_set_id",                 :null => false
+    t.integer  "spud_banner_set_id",                       :null => false
     t.string   "link_to"
-    t.string   "link_target"
+    t.string   "link_target",         :default => "_self"
     t.string   "title"
     t.string   "alt"
     t.integer  "sort_order",          :default => 0
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(:version => 20121127192250) do
     t.string   "banner_content_type"
     t.integer  "banner_file_size"
     t.datetime "banner_updated_at"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   add_index "spud_banners", ["spud_banner_set_id"], :name => "index_spud_banners_on_spud_banner_set_id"
