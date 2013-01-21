@@ -5,7 +5,7 @@ FactoryGirl.define do
   end
 
   factory :spud_banner_set do
-    name { Factory.next(:set_name) }
+    name { FactoryGirl.generate(:set_name) }
     width 600
     height 200
     cropped true
