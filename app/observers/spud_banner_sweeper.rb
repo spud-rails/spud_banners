@@ -8,11 +8,19 @@ class SpudBannerSweeper < ActionController::Caching::Sweeper
   end
 
   def after_save(record)
-    expire_cache_for(record)
+    if record.is_a?(SpudBanner)
+      expire_cache_for(record.owner)
+    else
+      expire_cache_for(record)
+    end
   end
 
   def after_destroy(record)
-    expire_cache_for(record)
+    if record.is_a?(SpudBanner)
+      expire_cache_for(record.owner)
+    else
+      expire_cache_for(record)
+    end
   end
 
 private
