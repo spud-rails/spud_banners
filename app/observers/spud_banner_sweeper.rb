@@ -28,7 +28,7 @@ private
     if defined?(Spud::Cms)
       values = [record.set_name]
       values << @old_name if !@old_name.blank?
-      SpudPageLiquidTag.where(:tag_name => "snippet",:value => values).includes(:attachment).each do |tag|
+      SpudPageLiquidTag.where(:tag_name => "banner_set",:value => values).includes(:attachment).each do |tag|
         partial = tag.attachment
         partial.postprocess_content
         partial.save
