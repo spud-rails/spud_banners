@@ -10,6 +10,7 @@ class SpudBanner < ActiveRecord::Base
     },
     :storage => Spud::Banners.paperclip_storage,
     :s3_credentials => Spud::Banners.s3_credentials,
+    :s3_host_name => Spud::Banners.s3_host_name,
     :url => Spud::Banners.storage_url,
     :path => Spud::Banners.storage_path
 
