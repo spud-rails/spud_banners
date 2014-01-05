@@ -28,4 +28,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'factory_girl', '~> 3.0'
   s.add_development_dependency 'database_cleaner', '1.0.0.RC1'
   s.add_development_dependency 'mocha', '0.14.0'
+  s.add_development_dependency 'simplecov'
 end

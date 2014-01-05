@@ -5,8 +5,8 @@ module Spud
   module Banners
     class BannerSetTag < Liquid::Tag
 
-      include Sprockets::Helpers::RailsHelper
-      include Sprockets::Helpers::IsolatedHelper
+      include Sprockets::Rails::Helper
+      # include Sprockets::Rails::Helpers::IsolatedHelper
       include ActionView::Helpers
       include ActionView::Context
       include SpudBannersHelper

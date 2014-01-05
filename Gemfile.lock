@@ -1,4 +1,13 @@
 PATH
+  remote: .
+  specs:
+    spud_banners (1.0.0.rc1)
+      liquid
+      paperclip
+      rails (~> 4.0.0)
+      spud_core (>= 1.0.0.rc1)
+
+PATH
   remote: ../spud_core_admin
   specs:
     spud_core (1.0.0.rc1)
@@ -15,15 +24,6 @@ PATH
       retina_tag
       tinymce-rails (= 3.5.9)
       will_paginate
-
-PATH
-  remote: .
-  specs:
-    spud_banners (1.0.0.rc1)
-      liquid
-      paperclip
-      rails (~> 4.0.0)
-      spud_core (>= 1.0.0.rc1)
 
 GEM
   remote: http://rubygems.org/
@@ -73,6 +73,7 @@ GEM
       railties (>= 3.0, < 5)
     database_cleaner (1.0.0.RC1)
     diff-lcs (1.2.5)
+    docile (1.1.1)
     erubis (2.7.0)
     factory_girl (3.6.2)
       activesupport (>= 3.0.0)
@@ -142,6 +143,11 @@ GEM
       shoulda-matchers (~> 1.0.0)
     shoulda-context (1.0.2)
     shoulda-matchers (1.0.0)
+    simplecov (0.8.2)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -172,9 +178,9 @@ DEPENDENCIES
   jquery-rails
   mocha (= 0.14.0)
   mysql2
-  rake
   rspec (= 2.14.0)
   rspec-rails (= 2.14.0)
   shoulda (~> 3.0.1)
+  simplecov
   spud_banners!
   spud_core!
