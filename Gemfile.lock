@@ -7,24 +7,6 @@ PATH
       rails (~> 4.0.0)
       spud_core (>= 1.0.0.rc1)
 
-PATH
-  remote: ../spud_core_admin
-  specs:
-    spud_core (1.0.0.rc1)
-      actionpack-action_caching
-      actionpack-page_caching
-      authlogic
-      bootstrap-will_paginate
-      breadcrumbs_on_rails
-      codemirror-rails
-      jquery-rails
-      protected_attributes
-      rails (~> 4.0.0)
-      rails-observers
-      retina_tag
-      tinymce-rails (= 3.5.9)
-      will_paginate
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -157,6 +139,20 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    spud_core (1.0.0.rc1)
+      actionpack-action_caching
+      actionpack-page_caching
+      authlogic
+      bootstrap-will_paginate
+      breadcrumbs_on_rails
+      codemirror-rails
+      jquery-rails
+      protected_attributes
+      rails (~> 4.0.0)
+      rails-observers
+      retina_tag
+      tinymce-rails (= 3.5.9)
+      will_paginate
     thor (0.18.1)
     thread_safe (0.1.3)
       atomic
@@ -183,4 +179,3 @@ DEPENDENCIES
   shoulda (~> 3.0.1)
   simplecov
   spud_banners!
-  spud_core!
