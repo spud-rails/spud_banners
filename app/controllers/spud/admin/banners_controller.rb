@@ -13,7 +13,7 @@ class Spud::Admin::BannersController < Spud::Admin::ApplicationController
 
   def create
     @banner = @banner_set.banners.build
-    @banner.attributes = params[:spud_banner]
+    @banner.attributes = banner_params
 
     last_banner = SpudBanner.select('sort_order').where(:spud_banner_set_id => @banner_set.id).order('sort_order desc').first
     if last_banner

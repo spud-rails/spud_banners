@@ -7,6 +7,7 @@ class SpudBannerSet < ActiveRecord::Base
 
   after_destroy :expire_cache
   after_save    :expire_cache
+  after_touch    :expire_cache
 
   def self.find_by_identifier(identifier)
     if identifier.class == String
