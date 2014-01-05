@@ -14,11 +14,12 @@ module Spud
           :thumbnail => 'spud/admin/banners/banners.png',
           :retina => true,
           :url => '/spud/admin/banner_sets',
-          :order => 120  
+          :order => 120
         }]
       end
       initializer :liquid do
         Liquid::Template.register_tag('spud_banner_set', Spud::Banners::BannerSetTag) if defined?(Liquid::Template)
+        Liquid::Template.register_tag('banner_set', Spud::Banners::BannerSetTag) if defined?(Liquid::Template)
       end
     end
   end

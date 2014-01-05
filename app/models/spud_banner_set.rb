@@ -1,10 +1,12 @@
 class SpudBannerSet < ActiveRecord::Base
-  attr_accessible :cropped, :height, :name, :short_name, :width
-  has_many :banners, :class_name => 'SpudBanner', :order => 'sort_order asc', :dependent => :destroy, :inverse_of => :owner
+  has_many :banners, -> { order :sort_order }, :class_name => 'SpudBanner', :dependent => :destroy, :inverse_of => :owner
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
-  validates_numericality_of :width, :height
+  validates :name, :presence => true, :uniqueness => true
+  validates :width, :numericality => true
+  validates :height, :numericality => true
+
+  after_destroy :expire_cache
+  after_save    :expire_cache
 
   def self.find_by_identifier(identifier)
     if identifier.class == String
@@ -25,6 +27,17 @@ class SpudBannerSet < ActiveRecord::Base
 
   def set_name
     return name
+  end
+
+  def expire_cache
+    if defined?(Spud::Cms)
+      old_name = self.name_was
+      values = [self.name]
+      values << old_name if !old_name.blank?
+      SpudPageLiquidTag.where(:tag_name => ["spud_banner_set","banner_set"], :value => values).includes(:attachment).each do |tag|
+        partial = tag.touch
+      end
+    end
   end
 
 end

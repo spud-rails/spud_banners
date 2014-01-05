@@ -1,6 +1,4 @@
 class Spud::Admin::BannerSetsController < Spud::Admin::ApplicationController
-
-  cache_sweeper :spud_banner_sweeper, :only => [:create, :update, :destroy]
   before_filter :get_record, :only => [:show, :edit, :update, :destroy]
   respond_to :html
   belongs_to_spud_app :banner_sets
@@ -22,9 +20,9 @@ class Spud::Admin::BannerSetsController < Spud::Admin::ApplicationController
   end
 
   def create
-    @banner_set = SpudBannerSet.new(params[:spud_banner_set])
+    @banner_set = SpudBannerSet.new(banner_set_params)
     if @banner_set.save
-      flash.now[:notice] = 'BannerSet created successfully' 
+      flash.now[:notice] = 'BannerSet created successfully'
       render 'create'
     else
       render 'new', :status => 422
@@ -36,7 +34,7 @@ class Spud::Admin::BannerSetsController < Spud::Admin::ApplicationController
   end
 
   def update
-    if @banner_set.update_attributes(params[:spud_banner_set])
+    if @banner_set.update_attributes(banner_set_params)
       flash.now[:notice] = 'BannerSet updated successfully'
       @banner_set.reprocess_banners!
       render 'create'
@@ -47,7 +45,7 @@ class Spud::Admin::BannerSetsController < Spud::Admin::ApplicationController
 
   def destroy
     if @banner_set.destroy
-      flash.now[:notice] = 'BannerSet deleted successfully' 
+      flash.now[:notice] = 'BannerSet deleted successfully'
     end
     render :nothing => true
   end
@@ -63,6 +61,10 @@ private
       redirect_to spud_admin_banner_sets_path
       return false
     end
+  end
+
+  def banner_set_params
+    params.require(:spud_banner_set).permit(:cropped, :height, :name, :short_name, :width)
   end
 
 end

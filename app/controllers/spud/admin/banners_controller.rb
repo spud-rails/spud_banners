@@ -1,8 +1,6 @@
 class Spud::Admin::BannersController < Spud::Admin::ApplicationController
 
   include RespondsToParent
-
-  cache_sweeper :spud_banner_sweeper, :only => [:create, :update, :destroy]
   before_filter :get_set, :only => [:new, :create]
   before_filter :get_record, :only => [:edit, :update, :destroy]
   respond_to :html
@@ -24,7 +22,7 @@ class Spud::Admin::BannersController < Spud::Admin::ApplicationController
 
     if request.xhr?
       if @banner.save
-        flash.now[:notice] = 'SpudBanner created successfully' 
+        flash.now[:notice] = 'SpudBanner created successfully'
         render 'show'
       else
         render 'new', :status => 422
@@ -43,14 +41,14 @@ class Spud::Admin::BannersController < Spud::Admin::ApplicationController
 
   def update
     if request.xhr?
-      if @banner.update_attributes(params[:spud_banner])
-        flash.now[:notice] = 'SpudBanner created successfully' 
+      if @banner.update_attributes(banner_params)
+        flash.now[:notice] = 'SpudBanner created successfully'
         render 'show'
       else
         render 'edit', :status => 422
       end
     else
-      @banner.update_attributes(params[:spud_banner])
+      @banner.update_attributes(banner_params)
       respond_to_parent do
         render 'legacy', :formats => [:js]
       end
@@ -59,7 +57,7 @@ class Spud::Admin::BannersController < Spud::Admin::ApplicationController
 
   def destroy
     if @banner.destroy
-      flash.now[:notice] = 'SpudBanner deleted successfully' 
+      flash.now[:notice] = 'SpudBanner deleted successfully'
       status = 200
     else
       status = 422
@@ -99,6 +97,10 @@ private
       redirect_to spud_admin_banner_sets_path
       return false
     end
+  end
+
+  def banner_params
+    params.require(:spud_banner).permit(:banner, :link_to, :link_target, :title, :alt, :sort_order)
   end
 
 end

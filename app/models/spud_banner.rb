@@ -1,8 +1,7 @@
 class SpudBanner < ActiveRecord::Base
-  attr_accessible :banner, :link_to, :link_target, :title, :alt, :sort_order
-  belongs_to :owner, :class_name => 'SpudBannerSet', :foreign_key => 'spud_banner_set_id', :inverse_of => :banners
+  belongs_to :owner, :class_name => 'SpudBannerSet', :foreign_key => 'spud_banner_set_id', :inverse_of => :banners, :touch => true
 
-  has_attached_file :banner, 
+  has_attached_file :banner,
     :styles => lambda { |attachment| attachment.instance.dynamic_styles },
     :convert_options => {
       :admin_small => '-strip -density 72x72',
