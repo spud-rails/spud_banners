@@ -1,8 +1,10 @@
 <%= content_tag :li, :class => 'spud_admin_banner_sets_list_item', 'data-id' => banner_set.id  do %>
   <%= banner_set.name %>
   <span class="spud_admin_banner_sets_list_item_actions">
-    <%= link_to 'Manage Banners', spud_admin_banner_set_path(banner_set), :class => 'btn btn-small' %>
-    <%= link_to 'Edit Configuration', edit_spud_admin_banner_set_path(banner_set), :class => 'btn btn-small spud_banner_sets_edit' %>
-    <%= link_to 'Delete', spud_admin_banner_set_path(banner_set), :class => 'btn btn-small btn-danger spud_banner_sets_delete' %>
+    <%= link_to 'Manage Banners', spud_admin_banner_set_path(banner_set), :class => 'btn btn-sm btn-default' %>
+    <%= link_to 'Edit Configuration', edit_spud_admin_banner_set_path(banner_set), :class => 'btn btn-sm btn-default spud_banner_sets_edit' %>
+    <%= link_to spud_admin_banner_set_path(banner_set), :class => 'btn btn-sm btn-danger spud_banner_sets_delete' do%>
+	    <span class="glyphicon glyphicon-trash"></span>
+    <%end%>
   </span>
 <% end %>
